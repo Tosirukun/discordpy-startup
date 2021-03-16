@@ -23,7 +23,7 @@ async def ping(ctx):
 @bot.command()
 async def server(ctx):
     body = requests.get("https://api.tosirukun.tk/api/tapi?type=server").text
-    data = json.loads(body)
+    data = json.loads(body, strict=False)
     await ctx.send(embed=discord.Embed(title="とじるくんネットワークのステータス").add_field(name="現在の接続数", value=data["data"]["online"]).add_field(name="接続可能な最大数", value=data["data"]["max"]))
 
 
